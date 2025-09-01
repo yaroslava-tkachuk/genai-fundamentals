@@ -46,10 +46,12 @@ query_text = "Find me movies about building AI robots"
 
 response = rag.search(
     query_text=query_text, 
-    retriever_config={"top_k": 5}
+    retriever_config={"top_k": 5},
+    return_context=True
 )
 
 print(response.answer)
+print("CONTEXT:", response.retriever_result.items)
 
 # CLose the database connection
 driver.close()
